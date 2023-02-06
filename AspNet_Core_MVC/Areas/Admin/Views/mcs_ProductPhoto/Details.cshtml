@@ -1,0 +1,20 @@
+@model eCommerce.Models.mcs_ProductPhoto
+
+@{
+	ViewData["Title"] = "Details - mcs_ProductPhoto";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_ProductPhoto - Details</h1>
+
+    <div class="display-label">ProductPhotoId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.ProductPhotoId)</div>
+    <div class="display-label">ProductId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.ProductId)</div>
+    <div class="display-label">Url</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Url)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { ProductPhotoId=Model.ProductPhotoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

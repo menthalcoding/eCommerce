@@ -1,0 +1,30 @@
+@model eCommerce.Models.mcs_Stock
+
+@{
+	ViewData["Title"] = "Delete - mcs_Stock";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <h1>mcs_Stock - Delete</h1>
+    <h3>Are you sure you want to delete this?</h3>
+
+        <div class="display-label">StockId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.StockId)</div>
+        <div class="display-label">ProductId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.ProductId)</div>
+        <div class="display-label">Quantity</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Quantity)</div>
+        <div class="display-label">EntryPrice</div>
+        <div class="display-field">@Html.DisplayFor(m => m.EntryPrice)</div>
+        <div class="display-label">EntryDate</div>
+        <div class="display-field">@Html.DisplayFor(m => m.EntryDate)</div>
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+
+    <p>
+    @Html.ActionLink("Back to List", "Index")
+    </p>
+}

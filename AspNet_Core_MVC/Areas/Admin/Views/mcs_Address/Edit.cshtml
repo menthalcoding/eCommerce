@@ -1,0 +1,88 @@
+@model eCommerce.Models.mcs_Address
+
+@{
+	ViewData["Title"] = "Edit - mcs_Address";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Address - Edit</h1>
+@using (Html.BeginForm())
+{
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AddressId)
+        </div>
+        <div class="editor-field">
+			@Html.DisplayFor(model => model.AddressId)
+			@Html.ValidationMessageFor(model => model.AddressId, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserId)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.UserId)
+			@Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GPS)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.GPS)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Country)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.Country)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.City)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ZipCode)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.ZipCode)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CountryCode)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.CountryCode)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Detail)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.Detail)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Primary)
+        </div>
+        <div class="editor-field">
+			@Html.CheckBoxFor(model => model.Primary.Value, Model.Primary)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Active)
+        </div>
+        <div class="editor-field">
+			@Html.CheckBoxFor(model => model.Active.Value, Model.Active)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+}
+<div>
+    @Html.ActionLink("Back to List", "index")
+</div>

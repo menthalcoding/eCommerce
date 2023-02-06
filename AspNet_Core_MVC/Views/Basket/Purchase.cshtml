@@ -1,0 +1,154 @@
+@{
+    ViewData["Title"] = "Purchase";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        getAddresses();
+        totalAmount();
+    });
+
+    function modalAddress() {
+        $('#modalAddress').modal('show');
+    }
+</script>
+<!-- Modal -->
+<div id="modalAddress" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Address</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating mb-2">
+                    <input type="text" id="newAddressName" class="form-control form-control-sm"
+                           value="" />
+                    <label for="newAddressName">Address Name</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="text" id="newAddressCountry" class="form-control form-control-sm"
+                           value="" />
+                    <label for="newAddressCounty">Country</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="text" id="newAddressCity" class="form-control form-control-sm"
+                           value="" />
+                    <label for="newAddressCity">City</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="text" id="newAddressZip" class="form-control form-control-sm"
+                           value="" />
+                    <label for="newAddressZip">Zip Code</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="text" id="newAddressDetail" class="form-control form-control-sm"
+                           value="" />
+                    <label for="newAddressDetail">Address</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <div class="form-check">
+                        <input type="checkbox" id="newAddressDefault" class="form-check-input"
+                               value="" />
+                        <label class="form-check-label" for="newAddressDefault">Is Default Address</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveAddress()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <div class="d-flex flex-row align-items-center">
+        </div>
+        <a href="/">Cancel and return to the website</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7 col-lg-7 col-xl-6 mb-4 mb-md-0">
+            <div>
+                <h5 class="mb-3">Address</h5>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row mt-1">
+                        <select id="addressNames" onchange="getAddress(this.options[this.selectedIndex].value);"></select>
+                    </div>
+                    <div class="d-flex flex-row align-items-center text-primary">
+                        <button type="button" class="btn btn-primary btn-sm me-1 mb-2 mr-8" data-mdb-toggle="tooltip" title="Add address" onclick="modalAddress()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg> Add Address
+                        </button>
+                    </div>
+                </div>
+                <div class="d-flex flex-column mb-3">
+                    <p id="addressDetail"></p>
+                    <div class="d-flex flex-row mt-1">
+                    <button type="button" class="btn btn-primary btn-sm me-1 mb-2 mr-8" data-mdb-toggle="tooltip" title="Remove address" onclick="removeAddress()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                        </svg> Remove Address
+                    </button>
+                    </div>
+                </div>
+                <hr />
+                <div class="d-flex flex-column mb-3">
+
+                    <div class="form-floating mb-4">
+                        <input type="text" id="formControlLgXsd" class="form-control form-control-lg"
+                               value="Anna Doe" />
+                        <label for="formControlLgXsd">Cardholder's Name</label>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-7">
+                            <div class="form-floating">
+                                <input type="text" id="formControlLgXM" class="form-control form-control-lg"
+                                       value="1234 5678 1234 5678" />
+                                <label for="formControlLgXM">Card Number</label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-floating">
+                                <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
+                                       placeholder="MM/YYYY" />
+                                <label for="formControlLgExpk">Expire</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-floating">
+                                <input type="password" id="formControlLgcvv" class="form-control form-control-lg"
+                                       placeholder="Cvv" />
+                                <label for="formControlLgcvv">Cvv</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success btn-lg btn-block">Proceed to payment</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-4 col-xl-4 offset-lg-1 offset-xl-2">
+            <div class="p-3" style="background-color: #eee;">
+                <span class="fw-bold">Order</span>
+                <div class="d-flex justify-content-between mt-2">
+                    <span>Price</span> <span id="productAmount">$0.0</span>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span>Shipping</span> <span id="shipping">$0.0</span>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span>Total</span> <span id="totalAmount">$0.0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

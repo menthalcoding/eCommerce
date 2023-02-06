@@ -1,0 +1,42 @@
+@model eCommerce.Models.mcs_Address
+
+@{
+	ViewData["Title"] = "Delete - mcs_Address";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <h1>mcs_Address - Delete</h1>
+    <h3>Are you sure you want to delete this?</h3>
+
+        <div class="display-label">AddressId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.AddressId)</div>
+        <div class="display-label">UserId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.UserId)</div>
+        <div class="display-label">Name</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Name)</div>
+        <div class="display-label">GPS</div>
+        <div class="display-field">@Html.DisplayFor(m => m.GPS)</div>
+        <div class="display-label">Country</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Country)</div>
+        <div class="display-label">City</div>
+        <div class="display-field">@Html.DisplayFor(m => m.City)</div>
+        <div class="display-label">ZipCode</div>
+        <div class="display-field">@Html.DisplayFor(m => m.ZipCode)</div>
+        <div class="display-label">CountryCode</div>
+        <div class="display-field">@Html.DisplayFor(m => m.CountryCode)</div>
+        <div class="display-label">Detail</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Detail)</div>
+        <div class="display-label">Primary</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Primary)</div>
+        <div class="display-label">Active</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Active)</div>
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+
+    <p>
+    @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,66 @@
+@model eCommerce.Models.mcs_CartItem
+
+@{
+	ViewData["Title"] = "Create - mcs_CartItem";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_CartItem - Create</h1>
+
+@using (Html.BeginForm())
+{
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="editor-label">
+        @Html.LabelFor(model => model.CartItemId)
+    </div>
+    <div class="editor-field">
+		@Html.DisplayFor(model => model.CartItemId)&nbsp;
+		@Html.ValidationMessageFor(model => model.CartItemId, "", new { @class = "text-danger" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.CartId)
+    </div>
+    <div class="editor-field">
+		@Html.DropDownListFor(model => model.CartId, (IEnumerable<SelectListItem>)ViewBag.mcs_CartList)
+		@Html.ValidationMessageFor(model => model.CartId, "", new { @class = "text-danger" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ProductId)
+    </div>
+    <div class="editor-field">
+		@Html.DropDownListFor(model => model.ProductId, (IEnumerable<SelectListItem>)ViewBag.mcs_ProductList)
+		@Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Quantity)
+    </div>
+    <div class="editor-field">
+		@Html.TextBoxFor(model => model.Quantity)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Created_at)
+    </div>
+    <div class="editor-field">
+		@Html.TextBoxFor(model => model.Created_at)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Updated_at)
+    </div>
+    <div class="editor-field">
+		@Html.TextBoxFor(model => model.Updated_at)
+    </div>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+<script>
+$( function() {
+
+	$('#Created_at').datepicker();
+	$('#Updated_at').datepicker();
+} );
+</script>

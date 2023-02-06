@@ -1,0 +1,72 @@
+@model eCommerce.Models.mcs_Address
+
+@{
+	ViewData["Title"] = "Details - mcs_Address";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Address - Details</h1>
+
+    <div class="display-label">AddressId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.AddressId)</div>
+    <div class="display-label">UserId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.UserId)</div>
+    <div class="display-label">Name</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Name)</div>
+    <div class="display-label">GPS</div>
+    <div class="display-field">@Html.DisplayFor(model => model.GPS)</div>
+    <div class="display-label">Country</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Country)</div>
+    <div class="display-label">City</div>
+    <div class="display-field">@Html.DisplayFor(model => model.City)</div>
+    <div class="display-label">ZipCode</div>
+    <div class="display-field">@Html.DisplayFor(model => model.ZipCode)</div>
+    <div class="display-label">CountryCode</div>
+    <div class="display-field">@Html.DisplayFor(model => model.CountryCode)</div>
+    <div class="display-label">Detail</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Detail)</div>
+    <div class="display-label">Primary</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Primary)</div>
+    <div class="display-label">Active</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Active)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { AddressId=Model.AddressId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<br><hr /><br>
+<h1>mcs_Shipping</h1>
+<table class="table" id="tbl_mcs_Shipping_List">
+<thead>
+	<tr class="tableCaption">
+		<th>ShippingId</th>
+		<th>OrderId</th>
+		<th>AddressId</th>
+		<th>ShippingMethod</th>
+		<th>Status</th>
+		<th>ShippingProvider</th>
+		<th>Cost</th>
+	</tr>
+</thead>
+<tbody>
+@foreach (var ft in Model.mcs_ShippingList) 
+{
+	<tr>
+		<td>@Html.DisplayFor(model => ft.ShippingId)</td>
+		<td>@Html.DisplayFor(model => ft.OrderId)</td>
+		<td>@Html.DisplayFor(model => ft.AddressId)</td>
+		<td>@Html.DisplayFor(model => ft.ShippingMethod)</td>
+		<td>@Html.DisplayFor(model => ft.Status)</td>
+		<td>@Html.DisplayFor(model => ft.ShippingProvider)</td>
+		<td>@Html.DisplayFor(model => ft.Cost)</td>
+	</tr>
+}
+
+</tbody>
+</table>
+    <script>
+        $(document).ready(function () {
+            $('#tbl_mcs_Shipping_List').DataTable();
+        });
+    </script>

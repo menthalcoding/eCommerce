@@ -1,0 +1,38 @@
+@model eCommerce.Models.mcs_Order
+
+@{
+	ViewData["Title"] = "Delete - mcs_Order";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <h1>mcs_Order - Delete</h1>
+    <h3>Are you sure you want to delete this?</h3>
+
+        <div class="display-label">OrderId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.OrderId)</div>
+        <div class="display-label">UserId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.UserId)</div>
+        <div class="display-label">CartId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.CartId)</div>
+        <div class="display-label">Created_at</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Created_at)</div>
+        <div class="display-label">Cost</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Cost)</div>
+        <div class="display-label">Tax</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Tax)</div>
+        <div class="display-label">Total</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Total)</div>
+        <div class="display-label">Paid</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Paid)</div>
+        <div class="display-label">Currency</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Currency)</div>
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+
+    <p>
+    @Html.ActionLink("Back to List", "Index")
+    </p>
+}

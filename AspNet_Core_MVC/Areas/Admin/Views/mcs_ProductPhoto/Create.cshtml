@@ -1,0 +1,41 @@
+@model eCommerce.Models.mcs_ProductPhoto
+
+@{
+	ViewData["Title"] = "Create - mcs_ProductPhoto";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_ProductPhoto - Create</h1>
+
+@using (Html.BeginForm())
+{
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ProductPhotoId)
+    </div>
+    <div class="editor-field">
+		@Html.DisplayFor(model => model.ProductPhotoId)&nbsp;
+		@Html.ValidationMessageFor(model => model.ProductPhotoId, "", new { @class = "text-danger" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ProductId)
+    </div>
+    <div class="editor-field">
+		@Html.DropDownListFor(model => model.ProductId, (IEnumerable<SelectListItem>)ViewBag.mcs_ProductList)
+		@Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Url)
+    </div>
+    <div class="editor-field">
+		@Html.TextBoxFor(model => model.Url)
+		@Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+    </div>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

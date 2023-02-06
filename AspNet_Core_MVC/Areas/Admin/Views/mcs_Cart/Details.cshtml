@@ -1,0 +1,98 @@
+@model eCommerce.Models.mcs_Cart
+
+@{
+	ViewData["Title"] = "Details - mcs_Cart";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Cart - Details</h1>
+
+    <div class="display-label">CartId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.CartId)</div>
+    <div class="display-label">UserId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.UserId)</div>
+    <div class="display-label">Status</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Status)</div>
+    <div class="display-label">Created_at</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Created_at)</div>
+    <div class="display-label">Updated_at</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Updated_at)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { CartId=Model.CartId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<br><hr /><br>
+<h1>mcs_CartItem</h1>
+<table class="table" id="tbl_mcs_CartItem_List">
+<thead>
+	<tr class="tableCaption">
+		<th>CartItemId</th>
+		<th>CartId</th>
+		<th>ProductId</th>
+		<th>Quantity</th>
+		<th>Created_at</th>
+		<th>Updated_at</th>
+	</tr>
+</thead>
+<tbody>
+@foreach (var ft in Model.mcs_CartItemList) 
+{
+	<tr>
+		<td>@Html.DisplayFor(model => ft.CartItemId)</td>
+		<td>@Html.DisplayFor(model => ft.CartId)</td>
+		<td>@Html.DisplayFor(model => ft.ProductId)</td>
+		<td>@Html.DisplayFor(model => ft.Quantity)</td>
+		<td>@Html.DisplayFor(model => ft.Created_at)</td>
+		<td>@Html.DisplayFor(model => ft.Updated_at)</td>
+	</tr>
+}
+
+</tbody>
+</table>
+    <script>
+        $(document).ready(function () {
+            $('#tbl_mcs_CartItem_List').DataTable();
+        });
+    </script>
+
+<br><hr /><br>
+<h1>mcs_Order</h1>
+<table class="table" id="tbl_mcs_Order_List">
+<thead>
+	<tr class="tableCaption">
+		<th>OrderId</th>
+		<th>UserId</th>
+		<th>CartId</th>
+		<th>Created_at</th>
+		<th>Cost</th>
+		<th>Tax</th>
+		<th>Total</th>
+		<th>Paid</th>
+		<th>Currency</th>
+	</tr>
+</thead>
+<tbody>
+@foreach (var ft in Model.mcs_OrderList) 
+{
+	<tr>
+		<td>@Html.DisplayFor(model => ft.OrderId)</td>
+		<td>@Html.DisplayFor(model => ft.UserId)</td>
+		<td>@Html.DisplayFor(model => ft.CartId)</td>
+		<td>@Html.DisplayFor(model => ft.Created_at)</td>
+		<td>@Html.DisplayFor(model => ft.Cost)</td>
+		<td>@Html.DisplayFor(model => ft.Tax)</td>
+		<td>@Html.DisplayFor(model => ft.Total)</td>
+		<td>@Html.DisplayFor(model => ft.Paid)</td>
+		<td>@Html.DisplayFor(model => ft.Currency)</td>
+	</tr>
+}
+
+</tbody>
+</table>
+    <script>
+        $(document).ready(function () {
+            $('#tbl_mcs_Order_List').DataTable();
+        });
+    </script>

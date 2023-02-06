@@ -1,0 +1,101 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="View.UI.mcs_OrderEditActivity"
+    android:layout_margin="@dimen/activity_margin">
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:paddingLeft="@dimen/activity_margin"
+                      android:paddingRight="@dimen/activity_margin"
+                      android:orientation="vertical">
+            <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_margin"
+                    android:text="OrderId" />
+            <TextView android:id="@+id/tvOrderId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_margin" />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="UserId" />
+            <EditText android:id="@+id/etUserId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="450" />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="CartId" />
+            <Spinner android:id="@+id/spnmcs_CartCartId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="Created_at" />
+            <EditText android:id="@+id/etCreated_at"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="Cost" />
+            <EditText android:id="@+id/etCost"
+				android:inputType="number"
+				android:digits="0123456789."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="Tax" />
+            <EditText android:id="@+id/etTax"
+				android:inputType="number"
+				android:digits="0123456789."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="Total" />
+            <EditText android:id="@+id/etTotal"
+				android:inputType="number"
+				android:digits="0123456789."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="Paid" />
+            <EditText android:id="@+id/etPaid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="Currency" />
+            <EditText android:id="@+id/etCurrency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="50" />
+            <Button android:id="@+id/btnEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_margin"
+                    android:text="Edit" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,28 @@
+@model eCommerce.Models.mcs_Shipping
+
+@{
+	ViewData["Title"] = "Details - mcs_Shipping";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Shipping - Details</h1>
+
+    <div class="display-label">ShippingId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.ShippingId)</div>
+    <div class="display-label">OrderId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.OrderId)</div>
+    <div class="display-label">AddressId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.AddressId)</div>
+    <div class="display-label">ShippingMethod</div>
+    <div class="display-field">@Html.DisplayFor(model => model.ShippingMethod)</div>
+    <div class="display-label">Status</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Status)</div>
+    <div class="display-label">ShippingProvider</div>
+    <div class="display-field">@Html.DisplayFor(model => model.ShippingProvider)</div>
+    <div class="display-label">Cost</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Cost)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { ShippingId=Model.ShippingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

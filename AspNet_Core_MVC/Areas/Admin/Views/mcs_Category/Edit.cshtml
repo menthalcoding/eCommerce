@@ -1,0 +1,46 @@
+@model eCommerce.Models.mcs_Category
+
+@{
+	ViewData["Title"] = "Edit - mcs_Category";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Category - Edit</h1>
+@using (Html.BeginForm())
+{
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryId)
+        </div>
+        <div class="editor-field">
+			@Html.DisplayFor(model => model.CategoryId)
+			@Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryParentId)
+        </div>
+        <div class="editor-field">
+			@Html.DropDownListFor(model => model.CategoryParentId, (IEnumerable<SelectListItem>)ViewBag.mcs_CategoryList)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.Name)
+			@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.Description)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+}
+<div>
+    @Html.ActionLink("Back to List", "index")
+</div>

@@ -1,0 +1,148 @@
+@using eCommerce.Models
+@model eCommerce.Models.Basket
+@{
+    ViewData["Title"] = "Basket";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    int totalAmount = 0;
+}
+<script>
+    window.addEventListener('change', function (e) {
+        changeQuantity(e.target.getAttribute("pid"), e.target.value);
+    });
+</script>
+<section class="h-100 gradient-custom">
+    <div class="container py-2">
+        <div class="row d-flex justify-content-center my-4">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0">Cart</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Single item -->
+                        @if (Model != null && Model.BasketItemList != null)
+                        { 
+                        @foreach (BasketItem item in Model.BasketItemList)
+                        {
+                        totalAmount += item.Quantity * (int)item.Price;
+                        <div class="row">
+                            <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                            <!-- Image -->
+                            <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                                <img src="~/images/product/@Html.Raw(item.ImageUri)" class="w-100" alt="" />
+                                <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                </a>
+                            </div>
+                            <!-- Image -->
+                            </div>
+
+                            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                            <!-- Data -->
+                            <p><a href="/product/detail?id=@item.ProductId"><strong>@Html.Raw(item.Name)</strong></a></p>
+                            <p>@Html.Raw(item.Description)</p>
+                            <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+                                title="Remove item" onclick="removeCartItem(@Html.Raw(item.ProductId))">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg> Remove
+                            </button>
+@*                            <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
+                                title="Move to the wish list">
+                                <i class="fas fa-heart"></i>
+                            </button>*@
+                            <!-- Data -->
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                            <!-- Quantity -->
+                            <div class="d-flex mb-4" style="max-width: 300px">
+
+                                <div class="form-outline">
+                                <input id="form1" min="0" name="quantity" value="@Html.Raw(item.Quantity)" type="number" class="form-control" pid="@Html.Raw(item.ProductId)" />
+                                <label class="form-label" for="form1">Quantity</label>
+                                </div>
+
+                            </div>
+                            <!-- Quantity -->
+
+                            <!-- Price -->
+                            <p class="text-start text-md-center">
+                                <strong id="itemPrice_@Html.Raw(item.ProductId)">$@Html.Raw(item.Quantity * item.Price)</strong>
+                            </p>
+                            <!-- Price -->
+                            </div>
+                        </div>
+                        <!-- Single item -->
+
+                        <hr class="my-4" />
+                        }
+                        }
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <p><strong>Expected shipping delivery</strong></p>
+            <p class="mb-0">12.10.2020 - 14.10.2020</p>
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body">
+            <p><strong>We accept</strong></p>
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+              alt="Visa" />
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+              alt="American Express" />
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+              alt="Mastercard" />
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.webp"
+              alt="PayPal acceptance mark" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Summary</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                Products
+                <span id="productAmount">$@Html.Raw(totalAmount)</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                Shipping
+                <span>Gratis</span>
+              </li>
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                <div>
+                  <strong>Total amount</strong>
+                  <strong>
+                    <p class="mb-0">(including VAT)</p>
+                  </strong>
+                </div>
+                <span><strong id="totalAmount">$@Html.Raw(totalAmount)</strong></span>
+              </li>
+            </ul>
+
+            <a href="/Basket/Purchase">
+                <button type="button" class="btn btn-primary btn-lg btn-block">
+                    Go to checkout <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z" />
+                    </svg>
+                </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

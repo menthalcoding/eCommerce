@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="android:buttonStyle">@style/styleButton</item>
+        <item name="floatingActionButtonStyle">@style/styleFabButton</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+<!--    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">-->
+<!--        <item name="android:windowBackground">@drawable/background_splash</item>-->
+<!--    </style>-->
+    <style name="errorMessage">
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_margin">12dp</item>
+        <item name="android:textColor">@color/colorError</item>
+    </style>
+    <style name="BottomAppBarOverlay">
+        <item name="colorControlNormal">@color/tr_barut</item>
+        <item name="backgroundTint">@color/silver</item>
+    </style>
+    <style name="styleTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:color">@color/black</item>
+    </style>
+    <style name="styleCheckBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">46dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:color">@color/qu_grey_600</item>
+    </style>
+    <style name="styleButton">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">46dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+    </style>
+    <style name="styleFabButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:color">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+    <style name="styleEditText">
+        <item name="android:color">@color/qu_grey_600</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">46dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+    </style>
+    <style name="styleSpinner">
+        <item name="android:color">@color/qu_grey_600</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">46dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="spinnerStyle">@style/Widget.AppCompat.Spinner.Underlined</item>
+    </style>
+    <style name="styleContainerBorder">
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/layout_border</item>
+    </style>
+    <style name="styleContainerBorder2">
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/layout_border</item>
+    </style>
+    <style name="styleWarning">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:textColor">@color/colorWarning</item>
+    </style>
+    <style name="styleCaption">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:text">styleCaption</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+    <style name="styleDescription">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:color">@color/colorPrimary</item>
+    </style>
+</resources>

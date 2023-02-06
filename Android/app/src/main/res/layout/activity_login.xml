@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_margin="40dp">
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="Email"
+        android:hint="Email"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:layout_margin="10dp"
+        android:text="webapi@test.com"/>
+
+    <EditText
+        android:text="Onemsiz77+"
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="Password"
+        android:hint="@string/password"
+        android:imeActionLabel="Sign in"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:enabled="true"
+        android:text="Login"
+        android:layout_margin="10dp" />
+
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textSize="20sp"
+        android:layout_margin="40dp"
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints"  />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

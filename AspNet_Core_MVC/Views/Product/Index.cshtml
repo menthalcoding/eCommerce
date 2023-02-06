@@ -1,0 +1,102 @@
+@model List<eCommerce.Models.mcs_Product>
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    List<eCommerce.Models.mcs_Category> CategoryList = (List<eCommerce.Models.mcs_Category>)ViewBag.CategoryList;
+    if (!CategoryList.Any())
+    {
+        CategoryList = new List<eCommerce.Models.mcs_Category>();
+    }
+
+    void GetChildCategories(int parentId)
+    {
+        var childs = CategoryList.Where(i => i.CategoryParentId == parentId);
+        if (childs.Any())
+        {
+            foreach (var item in childs)
+            {
+    <li class="mb-2"><a class="reset-anchor" href="/product?categoryid=@item.CategoryId">@item.Name</a></li>
+            }
+        }
+    }
+}
+            <!-- SHOP SIDEBAR-->
+            <div class="col-lg-3 order-2 order-lg-1">
+                <h5 class="text-uppercase mb-4">Categories</h5>
+    @foreach (var i in CategoryList.Where(i => i.CategoryParentId == 3))
+    {
+                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">@i.Name</strong></div>
+                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
+        @{GetChildCategories(i.CategoryId);}
+                </ul>
+    }
+                <h6 class="text-uppercase mb-3">Show only</h6>
+                <div class="form-check mb-1">
+                    <input class="form-check-input" type="checkbox" id="checkbox_1" name="cbStatus" value="new" onclick="changeStatus(this);">
+                    <label class="form-check-label" for="checkbox_1">New Products</label>
+                </div>
+                <div class="form-check mb-1">
+                    <input class="form-check-input" type="checkbox" id="checkbox_2" name="cbStatus" value="sale" onclick="changeStatus(this);">
+                    <label class="form-check-label" for="checkbox_2">Sale Products</label>
+                </div>
+            </div>
+              <!-- SHOP LISTING-->
+              <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
+                <div class="row mb-3 align-items-center">
+                  <div class="col-lg-6 mb-2 mb-lg-0">
+                    <p class="text-sm text-muted mb-0">Showing @Html.Raw(Model.Count) results</p>
+                  </div>
+                  <div class="col-lg-6">
+                    <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
+                      <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" href="#!"><i class="fas fa-th-large"></i></a></li>
+                      <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" href="#!"><i class="fas fa-th"></i></a></li>
+                      <li class="list-inline-item">
+                        <div class="choices__inner form-control form-control-sm">
+                            <select id="selOrder" class="selectpicker choices__input" onchange="changeSortByProduct();" data-customclass="form-control form-control-sm" tabindex="-1" data-choice="active">
+                                <option value="" selected="selected">Sort By </option>
+                                <option value="1" direction="Asc">Price: Low to High</option>
+                                <option value="1" direction="Desc">Price: High to Low</option>
+                                <option value="2" direction="Desc">Date: Low to High</option>
+                                <option value="2" direction="Asc">Date: High to Low</option>
+                            </select>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                    @foreach (eCommerce.Models.mcs_Product item in Model)
+                    {
+                  <!-- PRODUCT-->
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="product text-center">
+                      <div class="mb-3 position-relative">
+                        <div class="badge text-white bg-"></div>
+                        <div class="badge text-white bg-danger">@item.Status</div>
+                        <a class="d-block" href="/product/detail?id=@Html.Raw(item.ProductId)">
+                            <img class="img-fluid" src="~/images/product/@Html.Raw((string.IsNullOrEmpty(item.DefaultPhoto) ? "/images/default.jpg" : item.DefaultPhoto))" style="max-height:240px;width:auto" alt="...">
+                        </a>
+                        <div class="product-overlay">
+                          <ul class="mb-0 list-inline">
+                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="javascript:addToBasket(@Html.Raw(item.ProductId))">Add to cart</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    <h6> <a class="reset-anchor" href="/product/detail?id=@Html.Raw(item.ProductId)">@Html.Raw(item.Name)</a></h6>
+                        <p class="small text-muted">$@Html.Raw(item.Price)</p>
+                    </div>
+                  </div>
+                    }
+                </div>
+                <!-- PAGINATION-->
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-center justify-content-lg-end">
+                    <li class="page-item mx-1"><a class="page-link" href="#!" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                    <li class="page-item mx-1 active"><a class="page-link" href="#!">1</a></li>
+                    <li class="page-item mx-1"><a class="page-link" href="#!">2</a></li>
+                    <li class="page-item mx-1"><a class="page-link" href="#!">3</a></li>
+                    <li class="page-item ms-1"><a class="page-link" href="#!" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                  </ul>
+                </nav>
+              </div>

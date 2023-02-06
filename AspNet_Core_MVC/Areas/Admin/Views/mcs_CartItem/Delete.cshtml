@@ -1,0 +1,32 @@
+@model eCommerce.Models.mcs_CartItem
+
+@{
+	ViewData["Title"] = "Delete - mcs_CartItem";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <h1>mcs_CartItem - Delete</h1>
+    <h3>Are you sure you want to delete this?</h3>
+
+        <div class="display-label">CartItemId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.CartItemId)</div>
+        <div class="display-label">CartId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.CartId)</div>
+        <div class="display-label">ProductId</div>
+        <div class="display-field">@Html.DisplayFor(m => m.ProductId)</div>
+        <div class="display-label">Quantity</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Quantity)</div>
+        <div class="display-label">Created_at</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Created_at)</div>
+        <div class="display-label">Updated_at</div>
+        <div class="display-field">@Html.DisplayFor(m => m.Updated_at)</div>
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+
+    <p>
+    @Html.ActionLink("Back to List", "Index")
+    </p>
+}

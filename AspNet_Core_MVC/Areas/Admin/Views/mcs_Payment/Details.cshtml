@@ -1,0 +1,30 @@
+@model eCommerce.Models.mcs_Payment
+
+@{
+	ViewData["Title"] = "Details - mcs_Payment";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Payment - Details</h1>
+
+    <div class="display-label">PaymentId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.PaymentId)</div>
+    <div class="display-label">UserId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.UserId)</div>
+    <div class="display-label">PaymentType</div>
+    <div class="display-field">@Html.DisplayFor(model => model.PaymentType)</div>
+    <div class="display-label">Created_at</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Created_at)</div>
+    <div class="display-label">Amount</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Amount)</div>
+    <div class="display-label">Currency</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Currency)</div>
+    <div class="display-label">OrderId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.OrderId)</div>
+    <div class="display-label">AddressId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.AddressId)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { PaymentId=Model.PaymentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

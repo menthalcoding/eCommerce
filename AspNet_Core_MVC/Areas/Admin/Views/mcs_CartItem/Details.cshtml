@@ -1,0 +1,26 @@
+@model eCommerce.Models.mcs_CartItem
+
+@{
+	ViewData["Title"] = "Details - mcs_CartItem";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_CartItem - Details</h1>
+
+    <div class="display-label">CartItemId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.CartItemId)</div>
+    <div class="display-label">CartId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.CartId)</div>
+    <div class="display-label">ProductId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.ProductId)</div>
+    <div class="display-label">Quantity</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Quantity)</div>
+    <div class="display-label">Created_at</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Created_at)</div>
+    <div class="display-label">Updated_at</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Updated_at)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { CartItemId=Model.CartItemId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

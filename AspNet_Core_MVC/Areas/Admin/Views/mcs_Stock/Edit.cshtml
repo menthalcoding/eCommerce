@@ -1,0 +1,59 @@
+@model eCommerce.Models.mcs_Stock
+
+@{
+	ViewData["Title"] = "Edit - mcs_Stock";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Stock - Edit</h1>
+@using (Html.BeginForm())
+{
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StockId)
+        </div>
+        <div class="editor-field">
+			@Html.DisplayFor(model => model.StockId)
+			@Html.ValidationMessageFor(model => model.StockId, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductId)
+        </div>
+        <div class="editor-field">
+			@Html.DropDownListFor(model => model.ProductId, (IEnumerable<SelectListItem>)ViewBag.mcs_ProductList)
+			@Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Quantity)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.Quantity)
+			@Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EntryPrice)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.EntryPrice)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EntryDate)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.EntryDate)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+}
+<div>
+    @Html.ActionLink("Back to List", "index")
+</div>
+<script>
+$( function() {
+
+	$('#EntryDate').datepicker();
+} );
+</script>

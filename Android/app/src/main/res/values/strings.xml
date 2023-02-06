@@ -1,0 +1,32 @@
+<resources>
+<string name="app_name">NorthwindSampleDb</string>
+<string name="ToastDuration">5</string>
+<string name="Forbidden">Forbidden</string>
+<string name="NotFound">Not Found</string>
+
+<string name="name">Name</string>
+<string name="email">Email</string>
+<string name="password">Password</string>
+<string name="confirm_password">Confirm Password</string>
+<string name="phone">Phone</string>
+<string name="age">Age</string>
+<string name="submit">Submit</string>
+<string name="confirm_email">Confirm Email</string>
+<string name="terms_and_conditions">I agree to the terms and conditions</string>
+<string name="prompt_spinner_select">Please Select One</string>
+
+<string name="EMAIL_PATTERN">^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$</string>
+<string name="DATE_PATTERN">^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$</string>
+
+<string name="required">Please enter a valid value</string>
+<string name="invalid_name">Please enter a valid Name</string>
+<string name="invalid_email">Please enter a valid email</string>
+<string name="invalid_confirm_email">Email does not match</string>
+<string name="invalid_password">Please enter a valid password</string>
+<string name="invalid_confirm_password">Password does not match</string>
+<string name="invalid_phone">Please enter a valid Phone</string>
+<string name="invalid_age">Age must be between 12 and 60.</string>
+<string name="invalid_date">Please enter a valid Date</string>
+<string name="invalid_string_range">String index out of range</string>
+
+</resources>

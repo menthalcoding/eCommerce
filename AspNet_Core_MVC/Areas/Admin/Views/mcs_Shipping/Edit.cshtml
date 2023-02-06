@@ -1,0 +1,65 @@
+@model eCommerce.Models.mcs_Shipping
+
+@{
+	ViewData["Title"] = "Edit - mcs_Shipping";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Shipping - Edit</h1>
+@using (Html.BeginForm())
+{
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShippingId)
+        </div>
+        <div class="editor-field">
+			@Html.DisplayFor(model => model.ShippingId)
+			@Html.ValidationMessageFor(model => model.ShippingId, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OrderId)
+        </div>
+        <div class="editor-field">
+			@Html.DropDownListFor(model => model.OrderId, (IEnumerable<SelectListItem>)ViewBag.mcs_OrderList)
+			@Html.ValidationMessageFor(model => model.OrderId, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AddressId)
+        </div>
+        <div class="editor-field">
+			@Html.DropDownListFor(model => model.AddressId, (IEnumerable<SelectListItem>)ViewBag.mcs_AddressList)
+			@Html.ValidationMessageFor(model => model.AddressId, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShippingMethod)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.ShippingMethod)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.Status)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShippingProvider)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.ShippingProvider)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Cost)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.Cost)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+}
+<div>
+    @Html.ActionLink("Back to List", "index")
+</div>

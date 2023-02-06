@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="View.UI.mcs_CartCreateActivity"
+    android:layout_margin="@dimen/activity_margin">
+     <ScrollView 
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:orientation="vertical">
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="UserId" />
+            <EditText android:id="@+id/etUserId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="450" />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="Status" />
+            <EditText android:id="@+id/etStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="255" />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="Created_at" />
+            <EditText android:id="@+id/etCreated_at"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/activity_margin"
+                android:text="Updated_at" />
+            <EditText android:id="@+id/etUpdated_at"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+            <Button
+                android:id="@+id/btnCreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_margin"
+                android:text="Create"/>
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

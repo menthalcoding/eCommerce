@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - eCommerce</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/NorthwindSample.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" ></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="mySidenav" class="sidenav">
+        <a class="navbar-brand" asp-area="" asp-page="/Index" style="margin-bottom:7px;">eCommerce</a>
+        <hr style="background:white;" />
+        <ul>
+<a class="nav-link" href="/Admin/mcs_Address">mcs_Address</a>
+<a class="nav-link" href="/Admin/mcs_Cart">mcs_Cart</a>
+<a class="nav-link" href="/Admin/mcs_CartItem">mcs_CartItem</a>
+<a class="nav-link" href="/Admin/mcs_Category">mcs_Category</a>
+<a class="nav-link" href="/Admin/mcs_Order">mcs_Order</a>
+<a class="nav-link" href="/Admin/mcs_Payment">mcs_Payment</a>
+<a class="nav-link" href="/Admin/mcs_Product">mcs_Product</a>
+<a class="nav-link" href="/Admin/mcs_ProductPhoto">mcs_ProductPhoto</a>
+<a class="nav-link" href="/Admin/mcs_Shipping">mcs_Shipping</a>
+<a class="nav-link" href="/Admin/mcs_Stock">mcs_Stock</a>
+
+        </ul>
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top text-muted">
+        <div class="container">
+            &copy; 2023 - eCommerce - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

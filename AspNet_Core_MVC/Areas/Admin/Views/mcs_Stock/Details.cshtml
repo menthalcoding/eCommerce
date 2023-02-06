@@ -1,0 +1,24 @@
+@model eCommerce.Models.mcs_Stock
+
+@{
+	ViewData["Title"] = "Details - mcs_Stock";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Stock - Details</h1>
+
+    <div class="display-label">StockId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.StockId)</div>
+    <div class="display-label">ProductId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.ProductId)</div>
+    <div class="display-label">Quantity</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Quantity)</div>
+    <div class="display-label">EntryPrice</div>
+    <div class="display-field">@Html.DisplayFor(model => model.EntryPrice)</div>
+    <div class="display-label">EntryDate</div>
+    <div class="display-field">@Html.DisplayFor(model => model.EntryDate)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { StockId=Model.StockId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

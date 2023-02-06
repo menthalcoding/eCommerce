@@ -1,0 +1,128 @@
+@model eCommerce.Models.mcs_Product
+
+@{
+	ViewData["Title"] = "Details - mcs_Product";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Product - Details</h1>
+
+    <div class="display-label">ProductId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.ProductId)</div>
+    <div class="display-label">Name</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Name)</div>
+    <div class="display-label">Title</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Title)</div>
+    <div class="display-label">Description</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Description)</div>
+    <div class="display-label">CategoryId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.CategoryId)</div>
+    <div class="display-label">Price</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Price)</div>
+    <div class="display-label">DefaultPhoto</div>
+    <div class="display-field">@Html.DisplayFor(model => model.DefaultPhoto)</div>
+    <div class="display-label">Status</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Status)</div>
+    <div class="display-label">Created_at</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Created_at)</div>
+    <div class="display-label">Updated_at</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Updated_at)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { ProductId=Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<br><hr /><br>
+<h1>mcs_Stock</h1>
+<table class="table" id="tbl_mcs_Stock_List">
+<thead>
+	<tr class="tableCaption">
+		<th>StockId</th>
+		<th>ProductId</th>
+		<th>Quantity</th>
+		<th>EntryPrice</th>
+		<th>EntryDate</th>
+	</tr>
+</thead>
+<tbody>
+@foreach (var ft in Model.mcs_StockList) 
+{
+	<tr>
+		<td>@Html.DisplayFor(model => ft.StockId)</td>
+		<td>@Html.DisplayFor(model => ft.ProductId)</td>
+		<td>@Html.DisplayFor(model => ft.Quantity)</td>
+		<td>@Html.DisplayFor(model => ft.EntryPrice)</td>
+		<td>@Html.DisplayFor(model => ft.EntryDate)</td>
+	</tr>
+}
+
+</tbody>
+</table>
+    <script>
+        $(document).ready(function () {
+            $('#tbl_mcs_Stock_List').DataTable();
+        });
+    </script>
+
+<br><hr /><br>
+<h1>mcs_CartItem</h1>
+<table class="table" id="tbl_mcs_CartItem_List">
+<thead>
+	<tr class="tableCaption">
+		<th>CartItemId</th>
+		<th>CartId</th>
+		<th>ProductId</th>
+		<th>Quantity</th>
+		<th>Created_at</th>
+		<th>Updated_at</th>
+	</tr>
+</thead>
+<tbody>
+@foreach (var ft in Model.mcs_CartItemList) 
+{
+	<tr>
+		<td>@Html.DisplayFor(model => ft.CartItemId)</td>
+		<td>@Html.DisplayFor(model => ft.CartId)</td>
+		<td>@Html.DisplayFor(model => ft.ProductId)</td>
+		<td>@Html.DisplayFor(model => ft.Quantity)</td>
+		<td>@Html.DisplayFor(model => ft.Created_at)</td>
+		<td>@Html.DisplayFor(model => ft.Updated_at)</td>
+	</tr>
+}
+
+</tbody>
+</table>
+    <script>
+        $(document).ready(function () {
+            $('#tbl_mcs_CartItem_List').DataTable();
+        });
+    </script>
+
+<br><hr /><br>
+<h1>mcs_ProductPhoto</h1>
+<table class="table" id="tbl_mcs_ProductPhoto_List">
+<thead>
+	<tr class="tableCaption">
+		<th>ProductPhotoId</th>
+		<th>ProductId</th>
+		<th>Url</th>
+	</tr>
+</thead>
+<tbody>
+@foreach (var ft in Model.mcs_ProductPhotoList) 
+{
+	<tr>
+		<td>@Html.DisplayFor(model => ft.ProductPhotoId)</td>
+		<td>@Html.DisplayFor(model => ft.ProductId)</td>
+		<td>@Html.DisplayFor(model => ft.Url)</td>
+	</tr>
+}
+
+</tbody>
+</table>
+    <script>
+        $(document).ready(function () {
+            $('#tbl_mcs_ProductPhoto_List').DataTable();
+        });
+    </script>

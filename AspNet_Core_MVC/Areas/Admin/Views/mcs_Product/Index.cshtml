@@ -1,0 +1,175 @@
+@model IEnumerable<eCommerce.Models.mcs_Product>
+
+@{
+	ViewData["Title"] = "Index - mcs_Product";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+    
+<h1>mcs_Product - Index</h1>
+
+<p>
+    Web Api Functions:
+    <input id="btn_Get" type="button" value="Get" />
+    <input id="btn_Post" type="button" value="Post" />
+    <input id="btn_Put" type="button" value="Put" />
+    <input id="btn_Delete" type="button" value="Delete" />
+</p>
+<p>
+    @Html.ActionLink("Create New", "Create", "mcs_Product")
+</p>
+<table class="table table-striped" id="tbl_mcs_Product">
+    <thead>
+        <tr class="tableCaption">
+            <th>@Html.DisplayNameFor(model => model.ProductId)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.CategoryId)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.DefaultPhoto)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+            <th>@Html.DisplayNameFor(model => model.Created_at)</th>
+            <th>@Html.DisplayNameFor(model => model.Updated_at)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+	@foreach (var item in Model) 
+	{
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ProductId)</td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            <td>@Html.DisplayFor(modelItem => item.CategoryId)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>@Html.DisplayFor(modelItem => item.DefaultPhoto)</td>
+            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+            <td>@Html.DisplayFor(modelItem => item.Created_at)</td>
+            <td>@Html.DisplayFor(modelItem => item.Updated_at)</td>
+            <td>
+				@Html.ActionLink("Edit", "Edit", "mcs_Product", new { ProductId = item.ProductId })
+				@Html.ActionLink("Details", "Details", "mcs_Product", new { ProductId = item.ProductId })
+                @Html.ActionLink("Delete", "Delete", "mcs_Product", new { ProductId = item.ProductId })
+
+            </td>
+        </tr>
+	}
+</tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('#tbl_mcs_Product').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+
+        /////////////////////////////
+        // IMPORTANT
+        // The following code samples are provided as an example.
+        // Security problems may occur.
+        /////////////////////////////
+
+        async function getData(url = '', data = {}) {
+            // Default options are marked with *
+            let token = "Get your token here, Store it in local storage and read it from local storage is a better method"
+            const response = await fetch(url, {
+                method: 'GET',
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": JwtBearerKey //This field value appears. It causes serious security problems.
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                //body: JSON.stringify(data) // body data type must match "Content-Type" header
+            });
+
+            if (response.status != '200')
+                alert(response.status + ' ' + response.statusText);
+
+            return response.json(); // parses JSON response into native JavaScript objects
+        }
+
+        async function postData(url = '', data = {}) {
+            // Default options are marked with *
+            let token = "Get your token here, Store it in local storage and read it from local storage is a better method"
+            const response = await fetch(url, {
+                method: 'POST',
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": JwtBearerKey //This field value appears. It causes serious security problems.
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: JSON.stringify(data) // body data type must match "Content-Type" header
+            });
+
+            if (response.status != '200')
+                alert(response.status + ' ' + response.statusText);
+
+            return response.json(); // parses JSON response into native JavaScript objects
+        }
+
+        $('#btn_Get').click(function () {
+            getData('api/mcs_Product', {})
+                .then(data => {
+                    alert(JSON.stringify(data)); // JSON data parsed by `data.json()` call
+                });
+        });
+
+        $('#btn_Post').click(function () {
+            var data = {
+				ProductId: '',
+				Name: '',
+				Title: '',
+				Description: '',
+				CategoryId: '',
+				Price: '',
+				DefaultPhoto: '',
+				Status: '',
+				Created_at: '',
+				Updated_at: '',
+            };
+            postData('api/mcs_Product', data)
+                .then(data => {
+                    alert(JSON.stringify(data)); // JSON data parsed by `data.json()` call
+                });
+        });
+
+        $('#btn_Put').click(function () {
+            var ids = '1';
+            var data = {
+				ProductId: '',
+				Name: '',
+				Title: '',
+				Description: '',
+				CategoryId: '',
+				Price: '',
+				DefaultPhoto: '',
+				Status: '',
+				Created_at: '',
+				Updated_at: '',
+            };
+            postData('api/mcs_Product/update/' + ids, data)
+                .then(data => {
+                    alert(JSON.stringify(data)); // JSON data parsed by `data.json()` call
+                });
+        });
+
+        $('#btn_Delete').click(function () {
+            var ids = '2';
+            postData('api/mcs_Product/delete/' + ids, null)
+                .then(data => {
+                    alert(JSON.stringify(data));
+                });
+        });
+    });
+</script>

@@ -1,0 +1,68 @@
+@model eCommerce.Models.mcs_Order
+
+@{
+	ViewData["Title"] = "Details - mcs_Order";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Order - Details</h1>
+
+    <div class="display-label">OrderId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.OrderId)</div>
+    <div class="display-label">UserId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.UserId)</div>
+    <div class="display-label">CartId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.CartId)</div>
+    <div class="display-label">Created_at</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Created_at)</div>
+    <div class="display-label">Cost</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Cost)</div>
+    <div class="display-label">Tax</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Tax)</div>
+    <div class="display-label">Total</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Total)</div>
+    <div class="display-label">Paid</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Paid)</div>
+    <div class="display-label">Currency</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Currency)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { OrderId=Model.OrderId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<br><hr /><br>
+<h1>mcs_Shipping</h1>
+<table class="table" id="tbl_mcs_Shipping_List">
+<thead>
+	<tr class="tableCaption">
+		<th>ShippingId</th>
+		<th>OrderId</th>
+		<th>AddressId</th>
+		<th>ShippingMethod</th>
+		<th>Status</th>
+		<th>ShippingProvider</th>
+		<th>Cost</th>
+	</tr>
+</thead>
+<tbody>
+@foreach (var ft in Model.mcs_ShippingList) 
+{
+	<tr>
+		<td>@Html.DisplayFor(model => ft.ShippingId)</td>
+		<td>@Html.DisplayFor(model => ft.OrderId)</td>
+		<td>@Html.DisplayFor(model => ft.AddressId)</td>
+		<td>@Html.DisplayFor(model => ft.ShippingMethod)</td>
+		<td>@Html.DisplayFor(model => ft.Status)</td>
+		<td>@Html.DisplayFor(model => ft.ShippingProvider)</td>
+		<td>@Html.DisplayFor(model => ft.Cost)</td>
+	</tr>
+}
+
+</tbody>
+</table>
+    <script>
+        $(document).ready(function () {
+            $('#tbl_mcs_Shipping_List').DataTable();
+        });
+    </script>

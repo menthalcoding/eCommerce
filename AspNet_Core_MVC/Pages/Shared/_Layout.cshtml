@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ecommerce template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Google fonts-->
+    <link rel="stylesheet" href="~/css/css2.css">
+    <link rel="stylesheet" href="~/css/css2_002.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="~/css/style.default.3fcf2f25.css" id="theme-stylesheet">
+    <link id="new-stylesheet" rel="stylesheet" href="~/css/style.violet.6018f10d.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+
+    <script type="text/javascript" src='~/js/basket.js'></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            getBasketItemCount();
+            checkStatus();
+        });
+    </script>
+</head>
+<body>
+
+<div class="page-holder">
+    <!-- navbar-->
+    <header class="header bg-white">
+        <div class="container px-lg-3">
+            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
+                <a class="navbar-brand" href="/"><span class="fw-bold text-uppercase text-dark">Shooping Sample App</span></a>
+                <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                        </span>
+                        <div>
+                            <div class="dropdown_menu_css">
+                                <a class="nav-link active" href="#">Menu</a>
+                                <div class="dropdown_content_css">
+                                    <a class="nav-link" href="/admin/mcs_Category">Admin</a>
+                                    <a class="nav-link" href="/">Shop</a>
+                                    <a class="nav-link" href="/basket">Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <div>
+                                <div class="dropdown_menu_css">
+                                    <a class="nav-link active" href="/product">Admin</a>
+                                    <div class="dropdown_content_css">
+<a class="nav-link" href="/Admin/mcs_Address">mcs_Address</a>
+<a class="nav-link" href="/Admin/mcs_Cart">mcs_Cart</a>
+<a class="nav-link" href="/Admin/mcs_CartItem">mcs_CartItem</a>
+<a class="nav-link" href="/Admin/mcs_Category">mcs_Category</a>
+<a class="nav-link" href="/Admin/mcs_Order">mcs_Order</a>
+<a class="nav-link" href="/Admin/mcs_Payment">mcs_Payment</a>
+<a class="nav-link" href="/Admin/mcs_Product">mcs_Product</a>
+<a class="nav-link" href="/Admin/mcs_ProductPhoto">mcs_ProductPhoto</a>
+<a class="nav-link" href="/Admin/mcs_Shipping">mcs_Shipping</a>
+<a class="nav-link" href="/Admin/mcs_Stock">mcs_Stock</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Link--><a class="nav-link active" href="/product">Shop</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="/basket"> <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small class="fw-normal" id="basketLink">(0)</small></a></li>
+                        <li class="nav-item">@Html.Partial("_LoginPartial")</li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--  Modal -->
+    <div class="modal fade" id="productView" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content overflow-hidden border-0">
+                <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body p-0">
+                    <div class="row align-items-stretch">
+                        <div class="col-lg-6 p-lg-0"></div>
+                        <div class="col-lg-6">
+                            <div class="p-4 my-md-4">
+                                <ul class="list-inline mb-2">
+                                    <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                                    <li class="list-inline-item m-0 1"><i class="fas fa-star small text-warning"></i></li>
+                                    <li class="list-inline-item m-0 2"><i class="fas fa-star small text-warning"></i></li>
+                                    <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
+                                    <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
+                                </ul>
+                                <h2 class="h4">Red digital smartwatch</h2>
+                                <p class="text-muted">$250</p>
+                                <p class="text-sm mb-4">
+                                    Lorem ipsum dolor sit amet,
+                                    consectetur adipiscing elit. In ut ullamcorper leo, eget euismod orci.
+                                    Cum sociis natoque penatibus et magnis dis parturient montes nascetur
+                                    ridiculus mus. Vestibulum ultricies aliquam convallis.
+                                </p>
+                                <div class="row align-items-stretch mb-4 gx-0">
+                                    <div class="col-sm-7">
+                                        <div class="border d-flex align-items-center justify-content-between py-1 px-3">
+                                            <span class="small text-uppercase text-gray mr-4 no-select">Quantity</span>
+                                            <div class="quantity">
+                                                <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                                                <input class="form-control border-0 shadow-0 p-0" type="text" value="1">
+                                                <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5"></div>
+                                </div><a class="btn btn-link text-dark text-decoration-none p-0" href="#!"><i class="far fa-heart me-2"></i>Add to wish list</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- HERO SECTION-->
+        <section class="py-2 bg-light d-none">
+            <div class="container">
+                <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="h2 text-uppercase mb-0">Shop</h1>
+                    </div>
+                    <div class="col-lg-6 text-lg-end">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
+                                <li class="breadcrumb-item"><a class="text-dark" href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-3">
+            <div class="container p-0">
+                <div class="row">
+                    <div class="alert alert-warning text-center" role="alert">It is for testing purposes. Products is not sold.</div>
+            @RenderBody()
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="bg-dark text-white">
+        <div class="container py-4">
+            <div class="row py-5">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h6 class="text-uppercase mb-3">Customer services</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li><a class="footer-link" href="#!">Help &amp; Contact Us</a></li>
+                        <li><a class="footer-link" href="#!">Returns &amp; Refunds</a></li>
+                        <li><a class="footer-link" href="#!">Online Stores</a></li>
+                        <li><a class="footer-link" href="#!">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h6 class="text-uppercase mb-3">Company</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li><a class="footer-link" href="#!">What We Do</a></li>
+                        <li><a class="footer-link" href="#!">Available Services</a></li>
+                        <li><a class="footer-link" href="#!">Latest Posts</a></li>
+                        <li><a class="footer-link" href="#!">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-uppercase mb-3">Social media</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li><a class="footer-link" href="#!">Twitter</a></li>
+                        <li><a class="footer-link" href="#!">Instagram</a></li>
+                        <li><a class="footer-link" href="#!">Tumblr</a></li>
+                        <li><a class="footer-link" href="#!">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top pt-4" style="border-color: #1d1d1d !important">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="small text-muted mb-0">� 2021 All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="small text-muted mb-0"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

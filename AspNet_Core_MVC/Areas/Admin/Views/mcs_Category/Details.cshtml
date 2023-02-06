@@ -1,0 +1,94 @@
+@model eCommerce.Models.mcs_Category
+
+@{
+	ViewData["Title"] = "Details - mcs_Category";
+	Layout="~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>mcs_Category - Details</h1>
+
+    <div class="display-label">CategoryId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.CategoryId)</div>
+    <div class="display-label">CategoryParentId</div>
+    <div class="display-field">@Html.DisplayFor(model => model.CategoryParentId)</div>
+    <div class="display-label">Name</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Name)</div>
+    <div class="display-label">Description</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Description)</div>
+<br /><br />    
+<p>
+    @Html.ActionLink("Edit", "Edit", new { CategoryId=Model.CategoryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<br><hr /><br>
+<h1>mcs_Product</h1>
+<table class="table" id="tbl_mcs_Product_List">
+<thead>
+	<tr class="tableCaption">
+		<th>ProductId</th>
+		<th>Name</th>
+		<th>Title</th>
+		<th>Description</th>
+		<th>CategoryId</th>
+		<th>Price</th>
+		<th>DefaultPhoto</th>
+		<th>Status</th>
+		<th>Created_at</th>
+		<th>Updated_at</th>
+	</tr>
+</thead>
+<tbody>
+@foreach (var ft in Model.mcs_ProductList) 
+{
+	<tr>
+		<td>@Html.DisplayFor(model => ft.ProductId)</td>
+		<td>@Html.DisplayFor(model => ft.Name)</td>
+		<td>@Html.DisplayFor(model => ft.Title)</td>
+		<td>@Html.DisplayFor(model => ft.Description)</td>
+		<td>@Html.DisplayFor(model => ft.CategoryId)</td>
+		<td>@Html.DisplayFor(model => ft.Price)</td>
+		<td>@Html.DisplayFor(model => ft.DefaultPhoto)</td>
+		<td>@Html.DisplayFor(model => ft.Status)</td>
+		<td>@Html.DisplayFor(model => ft.Created_at)</td>
+		<td>@Html.DisplayFor(model => ft.Updated_at)</td>
+	</tr>
+}
+
+</tbody>
+</table>
+    <script>
+        $(document).ready(function () {
+            $('#tbl_mcs_Product_List').DataTable();
+        });
+    </script>
+
+<br><hr /><br>
+<h1>mcs_Category</h1>
+<table class="table" id="tbl_mcs_Category_List">
+<thead>
+	<tr class="tableCaption">
+		<th>CategoryId</th>
+		<th>CategoryParentId</th>
+		<th>Name</th>
+		<th>Description</th>
+	</tr>
+</thead>
+<tbody>
+@foreach (var ft in Model.mcs_CategoryList) 
+{
+	<tr>
+		<td>@Html.DisplayFor(model => ft.CategoryId)</td>
+		<td>@Html.DisplayFor(model => ft.CategoryParentId)</td>
+		<td>@Html.DisplayFor(model => ft.Name)</td>
+		<td>@Html.DisplayFor(model => ft.Description)</td>
+	</tr>
+}
+
+</tbody>
+</table>
+    <script>
+        $(document).ready(function () {
+            $('#tbl_mcs_Category_List').DataTable();
+        });
+    </script>
