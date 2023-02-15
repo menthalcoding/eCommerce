@@ -6,15 +6,15 @@ INSTALLATION
 DATABASE SETUP
 --------------
 Open Microsoft SQL Server Management Studio.
-Create the new database name exactly the same ([PROJECT_NAME]) as in the editor.
-Open [PROJECT_NAME]_Database.sql file in the main directory of the zip file produced by the editor and run it.
+Create the new database name exactly the same as in the editor.
+Open the sql file in the main directory of the zip file produced by the editor and run it.
 
 WEBSITE SETUP
 -------------
 Open Microsoft Visual Studio. (version 2022 recommended)
 Click Create a New Project.
 Click ASP.NET Core Web Application.
-Enter the name of your project exactly the same ([PROJECT_NAME]) as in the editor.
+Enter the name of your project exactly the same as in the editor.
 Select the Authentication Type field as individual accounts and click Create.
 
 Open the package manager console and run the commands below.
